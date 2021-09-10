@@ -90,10 +90,12 @@ public class RankingManager : MonoBehaviour
 
 
                     // Asset/Fontの下にあるフォントを検索（違うフォルダに入れている場合は変更）
-                    string[] fonts = AssetDatabase.FindAssets("t:Font", new string[] { "Assets/Font" });
+                    //string[] fonts = AssetDatabase.FindAssets("t:Font", new string[] { "Assets/Font" });
 
                     //Fontフォルダ内の一番目のフォントをfontに入れる
-                    Font font = AssetDatabase.LoadAssetAtPath<Font>(AssetDatabase.GUIDToAssetPath(fonts[0]));
+                    //Font font = AssetDatabase.LoadAssetAtPath<Font>(AssetDatabase.GUIDToAssetPath(fonts[0]));
+
+                    Font font = Resources.Load("Font/RocknRollOne-Regular") as Font;
 
                     var textChild = text.AddComponent<Text>();
                     textChild.text = "                                      " +  (i + 1) + ":" + objList[i]["name"] + "   " + objList[i]["score"] + "m";
@@ -101,8 +103,6 @@ public class RankingManager : MonoBehaviour
                     textChild.fontSize = 30;
 
                     textChild.font = font;
-
-                    //textChild.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; ;
 
                     if (objList[i].ObjectId == ResultManager.selfID)
                     {
@@ -114,7 +114,6 @@ public class RankingManager : MonoBehaviour
                         textChild.color = Color.black;
 
                     }
-                    //rankingText.text += (i + 1) + ":" + objList[i]["name"] + "   " + objList[i]["score"] + "\n";
                 }
             }
             else

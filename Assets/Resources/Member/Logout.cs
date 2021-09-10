@@ -31,7 +31,7 @@ public class Logout : MonoBehaviour
 				UnityEngine.Debug.Log ("ログアウトに失敗: " + e.ErrorMessage);
 			} else {
 				UnityEngine.Debug.Log ("ログアウトに成功");
-				Application.LoadLevel ("Loginsignin");
+				Application.LoadLevel ("Scene_Title");
 			}
 		});
 

@@ -136,6 +136,59 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //何もしてない状態なら動かないようにする
+        playerP.xr = 0;
+        playerP.xl = 0;
+        //エディタの時
+        if (Application.isEditor)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                //マウスの座標取得、ｚ座標は０に
+                Vector3 mouse = Input.mousePosition;
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(mouse);
+                mousePosition.z = 0f;
+
+                //マウスのｘ座標が画面右の時
+                if (mousePosition.x > 0f)
+                {
+                    Debug.Log("右側クリック");
+                    playerP.xr = 1.0f;
+                }
+                //マウスのｘ座標が画面左の時
+                else if (mousePosition.x < 0f)
+                {
+                    Debug.Log("左側クリック");
+                    playerP.xl = -1.0f;
+                }
+            }
+
+        }
+        //実機の時
+        else
+        {
+            if (Input.touchCount > 0)
+            {
+                //タッチの座標取得、ｚ座標は０に
+                Touch touch = Input.GetTouch(0);
+                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                touchPosition.z = 0f;
+
+                //タッチのｘ座標が画面右の時
+                if (touchPosition.x > 0f)
+                {
+                    Debug.Log("右側タッチ");
+                    playerP.xr = 1.0f;
+                }
+                //タッチのｘ座標が画面左の時
+                else if (touchPosition.x < 0f)
+                {
+                    Debug.Log("左側タッチ");
+                    playerP.xl = -1.0f;
+                }
+            }
+        }
+
         //プレイヤーが生きている間
         if (!playerP.isDead)
         {

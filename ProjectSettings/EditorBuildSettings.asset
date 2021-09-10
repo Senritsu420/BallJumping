@@ -17,4 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene_Ranking.unity
     guid: 6d62eee52851de04e9c71b143a767f56
-  m_configObjects: {}
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 9daef0959d700d140b5c96016396c0fe, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: bdbac5b6ed7ddec4182b3fd02822d0b4, type: 2}
